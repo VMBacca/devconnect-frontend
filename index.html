@@ -1,0 +1,223 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+
+    <title>DevConnect - Home</title>
+
+    <meta
+      name="viewport"
+      content="width=device-width,minimum-scale=1,initial-scale=1"
+    />
+
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+
+  <body>
+    <header>
+      <div class="container">
+        <div class="logo">
+          <a href="index.html">
+            <img src="assets/images/devconnect_logo.png" alt="DevConnect" />
+          </a>
+        </div>
+
+        <div class="head-side">
+          <div class="head-side-left">
+            <div class="search-area">
+              <form method="GET">
+                <input type="search" placeholder="Search..." name="s" />
+              </form>
+            </div>
+          </div>
+
+          <div class="head-side-right">
+            <a href="" class="user-area">
+              <div class="user-area-text" id="current-user-name">User</div>
+
+              <div class="user-area-icon">
+                <img
+                  id="current-user-avatar"
+                  src="media/avatars/avatar_default.png"
+                />
+              </div>
+            </a>
+
+            <a href="" class="user-logout" id="logout-btn">
+              <img src="assets/images/power_white.png" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="container main">
+      <aside class="mt-10">
+        <nav>
+          <a href="index.html">
+            <div class="menu-item active">
+              <div class="menu-item-icon">
+                <img src="assets/images/home-run.png" width="16" height="16" />
+              </div>
+
+              <div class="menu-item-text">Home</div>
+            </div>
+          </a>
+
+          <a href="profile.html">
+            <div class="menu-item">
+              <div class="menu-item-icon">
+                <img src="assets/images/user.png" width="16" height="16" />
+              </div>
+
+              <div class="menu-item-text">My Profile</div>
+            </div>
+          </a>
+
+          <a href="friends.html">
+            <div class="menu-item">
+              <div class="menu-item-icon">
+                <img src="assets/images/friends.png" width="16" height="16" />
+              </div>
+
+              <div class="menu-item-text">Friends</div>
+
+              <div class="menu-item-badge" id="friend-count">0</div>
+            </div>
+          </a>
+
+          <a href="photos.html">
+            <div class="menu-item">
+              <div class="menu-item-icon">
+                <img src="assets/images/photo.png" width="16" height="16" />
+              </div>
+
+              <div class="menu-item-text">Photos</div>
+            </div>
+          </a>
+
+          <div class="menu-splitter"></div>
+
+          <a href="">
+            <div class="menu-item">
+              <div class="menu-item-icon">
+                <img src="assets/images/settings.png" width="16" height="16" />
+              </div>
+
+              <div class="menu-item-text">Settings</div>
+            </div>
+          </a>
+
+          <a href="#" id="logout-btn-side">
+            <div class="menu-item">
+              <div class="menu-item-icon">
+                <img src="assets/images/power.png" width="16" height="16" />
+              </div>
+
+              <div class="menu-item-text">Logout</div>
+            </div>
+          </a>
+        </nav>
+      </aside>
+
+      <section class="feed mt-10">
+        <div class="row">
+          <div class="column pr-5">
+            <div class="box feed-new">
+              <div class="box-body">
+                <div class="feed-new-editor m-10 row">
+                  <div class="feed-new-avatar">
+                    <img
+                      id="create-post-avatar"
+                      src="media/avatars/avatar_default.png"
+                    />
+                  </div>
+
+                  <div
+                    id="create-post-placeholder"
+                    class="feed-new-input-placeholder"
+                  >
+                    What's on your mind?
+                  </div>
+
+                  <div
+                    id="create-post-input"
+                    class="feed-new-input"
+                    contenteditable="true"
+                    style="display: none"
+                  ></div>
+
+                  <div
+                    id="create-post-button"
+                    class="feed-new-send"
+                    style="display: true"
+                  >
+                    <img src="assets/images/send.png" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div id="feed-container"></div>
+          </div>
+
+          <div class="column side pl-5">
+            <div class="box technologies">
+              <div class="box-header">
+                <div class="box-header-text">Project Stack</div>
+              </div>
+
+              <div class="box-body tech-list">
+                <div class="tech-item">✔ HTML5</div>
+                <div class="tech-item">✔ CSS3</div>
+                <div class="tech-item">✔ JavaScript ES6+</div>
+                <div class="tech-item">✔ Laravel 13</div>
+                <div class="tech-item">✔ REST API</div>
+                <div class="tech-item">✔ JWT Authentication</div>
+                <div class="tech-item">✔ MySQL</div>
+                <div class="tech-item">✔ Fetch API</div>
+              </div>
+            </div>
+
+            <div class="box">
+              <div class="box-body m-20 footer-box">
+                <div class="footer-title">Developed by</div>
+
+                <div class="footer-name">Vinicius Marcondes Bacca</div>
+
+                <div class="footer-role">Full Stack Developer</div>
+
+                <div class="footer-description">
+                  Building scalable web applications with Laravel, JavaScript
+                  and REST APIs.
+                </div>
+
+                <a
+                  class="footer-github"
+                  href="https://github.com/VMBacca"
+                  target="_blank"
+                >
+                  View on GitHub
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <div class="modal">
+      <div class="modal-inner">
+        <a rel="modal:close">&times;</a>
+
+        <div class="modal-content"></div>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="assets/js/vanillaModal.js"></script>
+
+    <script src="assets/js/post.js"></script>
+
+    <script type="text/javascript" src="assets/js/script.js"></script>
+  </body>
+</html>

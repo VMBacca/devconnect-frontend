@@ -1,0 +1,128 @@
+.modal {
+  display: none;
+}
+
+.vanilla-modal .modal {
+  display: block;
+  position: fixed;
+  content: "";
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(5, 8, 15, 0.85);
+  backdrop-filter: blur(8px);
+  z-index: -1;
+  opacity: 0;
+  font-size: 0;
+  transition:
+    opacity 0.2s,
+    z-index 0s 0.2s;
+  text-align: center;
+  overflow: hidden;
+  overflow-y: auto;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+}
+
+.vanilla-modal .modal > * {
+  display: inline-block;
+  white-space: normal;
+  vertical-align: middle;
+  text-align: left;
+}
+
+.vanilla-modal .modal:before {
+  display: inline-block;
+  overflow: hidden;
+  width: 0;
+  height: 100%;
+  vertical-align: middle;
+  content: "";
+}
+
+.vanilla-modal.modal-visible .modal {
+  z-index: 99;
+  opacity: 1;
+  transition: opacity 0.2s;
+}
+
+.modal-inner {
+  position: relative;
+  overflow: hidden;
+  max-width: 90%;
+  max-height: 90%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background: var(--surface);
+  border: 1px solid var(--purple);
+  border-radius: 18px;
+  box-shadow:
+    0 0 25px rgba(155, 92, 255, 0.25),
+    0 20px 60px rgba(0, 0, 0, 0.65);
+  z-index: -1;
+  opacity: 0;
+  transform: scale(0.9);
+  transition:
+    opacity 0.25s,
+    transform 0.25s,
+    z-index 0s 0.25s;
+}
+
+.modal-visible .modal-inner {
+  z-index: 100;
+  opacity: 1;
+  transform: scale(1);
+}
+
+a[rel="modal:close"] {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 22px;
+  font-weight: bold;
+  color: var(--text);
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: 0.25s;
+}
+a[rel="modal:close"]:hover {
+  background: var(--purple);
+  color: white;
+  transform: rotate(90deg);
+  box-shadow: 0 0 18px rgba(155, 92, 255, 0.45);
+}
+
+.modal-content {
+  padding: 25px;
+}
+
+.modal-content img {
+  display: block;
+  margin: auto;
+  max-width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.45);
+}
+
+#photo-modal.active .modal-inner {
+  opacity: 1;
+  transform: scale(1);
+  z-index: 100;
+}
+
+#photo-modal.active .modal-content {
+  opacity: 1;
+}
+
+#photo-modal.active img {
+  opacity: 1;
+}

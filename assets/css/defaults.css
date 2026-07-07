@@ -1,0 +1,92 @@
+.flex-1 {
+  flex: 1;
+}
+
+.pl-5 {
+  padding-left: 5px;
+}
+
+.pl-10 {
+  padding-left: 10px;
+}
+
+.pr-5 {
+  padding-right: 5px;
+}
+
+.pr-10 {
+  padding-right: 10px;
+}
+
+.mt-0 {
+  margin-top: 0;
+}
+
+.mt-5 {
+  margin-top: 5px;
+}
+
+.mt-10 {
+  margin-top: 10px;
+}
+
+.mt-20 {
+  margin-top: 20px;
+}
+
+.m-10 {
+  margin: 10px;
+}
+
+.m-20 {
+  margin: 20px;
+}
+
+.m-width-10 {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.m-width-20 {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.m-height-10 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+/* ---------- Glow Utilities ---------- */
+
+.glow-green {
+  box-shadow:
+    0 0 8px rgba(0, 255, 140, 0.35),
+    0 0 16px rgba(0, 255, 140, 0.2);
+}
+
+.glow-purple {
+  box-shadow:
+    0 0 8px rgba(166, 0, 255, 0.35),
+    0 0 16px rgba(166, 0, 255, 0.2);
+}
+
+.text-green {
+  color: #00ff9c;
+}
+
+.text-purple {
+  color: #a600ff;
+}
+
+.border-green {
+  border: 1px solid rgba(0, 255, 140, 0.35);
+}
+
+.border-purple {
+  border: 1px solid rgba(166, 0, 255, 0.35);
+}
+
+.transition {
+  transition: all 0.25s ease;
+}

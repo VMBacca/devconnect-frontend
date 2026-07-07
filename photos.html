@@ -1,0 +1,207 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>DevConnect - Photos</title>
+    <meta
+      name="viewport"
+      content="width=device-width,minimum-scale=1,initial-scale=1"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div class="logo">
+          <a href="index.html" onclick="window.location.href = 'index.html'">
+            <img src="assets/images/devconnect_logo.png" alt="devconnect" />
+          </a>
+        </div>
+        <div class="head-side">
+          <div class="head-side-left">
+            <div class="search-area">
+              <form method="GET">
+                <input type="search" placeholder="Search" name="s" />
+              </form>
+            </div>
+          </div>
+          <div class="head-side-right">
+            <a href="" class="user-area">
+              <div class="user-area-text" id="logged-user-name"></div>
+              <div class="user-area-icon">
+                <img
+                  id="logged-user-avatar"
+                  src="media/avatars/avatar_default.png"
+                />
+              </div>
+            </a>
+            <a href="#" class="user-logout" id="logout-btn">
+              <img src="assets/images/power_white.png" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+    <section class="container main">
+      <aside class="mt-10">
+        <nav>
+          <a href="index.html" onclick="window.location.href = 'index.html'">
+            <div class="menu-item">
+              <div class="menu-item-icon">
+                <img src="assets/images/home-run.png" width="16" height="16" />
+              </div>
+              <div class="menu-item-text">Home</div>
+            </div>
+          </a>
+          <a
+            href="profile.html"
+            onclick="window.location.href = 'profile.html'"
+          >
+            <div class="menu-item">
+              <div class="menu-item-icon">
+                <img src="assets/images/user.png" width="16" height="16" />
+              </div>
+              <div class="menu-item-text">My Profile</div>
+            </div>
+          </a>
+          <a href="friends.html">
+            <div class="menu-item active">
+              <div class="menu-item-icon">
+                <img src="assets/images/friends.png" width="16" height="16" />
+              </div>
+              <div class="menu-item-text">Friends</div>
+              <div class="menu-item-badge" id="friends-count">0</div>
+            </div>
+          </a>
+          <a href="photos.html" onclick="window.location.href = 'photos.html'">
+            <div class="menu-item active">
+              <div class="menu-item-icon">
+                <img src="assets/images/photo.png" width="16" height="16" />
+              </div>
+              <div class="menu-item-text">Photos</div>
+            </div>
+          </a>
+          <div class="menu-splitter"></div>
+          <a href="">
+            <div class="menu-item">
+              <div class="menu-item-icon">
+                <img src="assets/images/settings.png" width="16" height="16" />
+              </div>
+              <div class="menu-item-text">Settings</div>
+            </div>
+          </a>
+          <a href="#" id="logout-btn-side">
+            <div class="menu-item">
+              <div class="menu-item-icon">
+                <img src="assets/images/power.png" width="16" height="16" />
+              </div>
+              <div class="menu-item-text">Logout</div>
+            </div>
+          </a>
+        </nav>
+      </aside>
+      <section class="feed">
+        <div class="row">
+          <div class="box flex-1 border-top-flat">
+            <div class="box-body">
+              <div id="photos-cover" class="profile-cover"></div>
+              <div class="profile-info m-20 row">
+                <div class="profile-info-avatar">
+                  <a href="">
+                    <img
+                      id="photos-avatar"
+                      src="media/avatars/avatar_default.png"
+                    />
+                  </a>
+                </div>
+                <div class="profile-info-name">
+                  <div class="profile-info-name-text">
+                    <a href="profile.html" id="photos-name"> </a>
+                  </div>
+                  <div id="photos-city" class="profile-info-location"></div>
+                </div>
+                <div class="profile-info-data row">
+                  <div class="profile-info-item m-width-20">
+                    <div class="profile-info-item-n">
+                      <div
+                        id="photos-followers"
+                        class="profile-info-item-n"
+                      ></div>
+                    </div>
+                    <div class="profile-info-item-s">Followers</div>
+                  </div>
+                  <div class="profile-info-item m-width-20">
+                    <div class="profile-info-item-n">
+                      <div
+                        id="photos-following"
+                        class="profile-info-item-n"
+                      ></div>
+                    </div>
+                    <div class="profile-info-item-s">Following</div>
+                  </div>
+                  <div class="profile-info-item m-width-20">
+                    <div class="profile-info-item-n">
+                      <div id="photos-count" class="profile-info-item-n"></div>
+                    </div>
+                    <div class="profile-info-item-s">Photos</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="column">
+            <div class="box">
+              <div class="box-header">
+                <h3 id="photos-title">Gallery (0)</h3>
+                <span id="photos-subtitle"></span>
+              </div>
+
+              <div class="box mb-20">
+                <div class="box-header">
+                  <div class="box-header-text">Post a new photo</div>
+                </div>
+
+                <div class="box-body">
+                  <input type="file" id="photo-upload" accept="image/*" />
+
+                  <div id="photo-preview-area" style="margin-top: 10px"></div>
+
+                  <button id="upload-photo-btn" class="default-btn mt-10">
+                    Send picture
+                  </button>
+
+                  <button
+                    id="cancel-photo-btn"
+                    class="default-btn mt-10 secondary-btn"
+                    style="display: none"
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </div>
+
+              <div class="box-body">
+                <div id="photos-container" class="full-user-photos"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+    <div class="modal" id="photo-modal">
+      <div class="modal-inner">
+        <a rel="modal:close">&times;</a>
+
+        <div class="modal-content">
+          <img id="modal-photo" class="gallery-photo-full" />
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript" src="assets/js/script.js"></script>
+    <script type="text/javascript" src="assets/js/photos.js"></script>
+    <script src="assets/js/post.js"></script>
+  </body>
+</html>
