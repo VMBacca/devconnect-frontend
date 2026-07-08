@@ -49,14 +49,9 @@
 
 .feed-item-buttons {
   display: flex;
-
   align-items: center;
-
-  margin-left: 10px;
-
-  border-top: 1px solid #eee;
-
-  padding: 10px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 10px 20px;
 }
 
 .like-btn,
@@ -70,7 +65,7 @@
   background-position: left center;
   background-repeat: no-repeat;
 
-  padding-left: 35px;
+  padding-left: 30px;
   margin-right: 20px;
 
   font-size: 15px;
@@ -150,10 +145,16 @@
   margin-bottom: 5px;
   color: #00ff9d;
   font-size: 14px;
+  font-weight: 600;
   text-decoration: none;
+  transition: 0.2s;
 }
+.fic-item-info a:hover {
+  color: #6dffc8;
+}
+
 .fic-item-info {
-  color: #d6d6d6;
+  color: var(--text);
   font-size: 13px;
   margin: 10px;
 }
@@ -181,4 +182,20 @@
   margin: 10px;
   object-fit: cover;
   display: block;
+}
+
+.feed-item-name a {
+  color: #00ff9d;
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: 0.2s;
+}
+.feed-item-name a:hover {
+  color: #6dffc8;
+}
+
+.feed-item-date {
+  color: var(--text3);
+  font-size: 13px;
 }

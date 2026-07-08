@@ -3,8 +3,9 @@
 
 # Windows
 Thumbs.db
+Desktop.ini
 
-# VSCode
+# VS Code
 .vscode/
 
 # JetBrains
@@ -12,3 +13,14 @@ Thumbs.db
 
 # Logs
 *.log
+
+# Environment files
+.env
+.env.*
+
+# Node (future-proof)
+node_modules/
+
+# OS temporary files
+*.tmp
+*.temp

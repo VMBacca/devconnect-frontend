@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", init);
 
 const profileState = {
   user: null,
+  loggedUser: null,
 };
 
 async function init() {
@@ -37,18 +38,21 @@ async function loadProfile() {
 
   const currentUser = await currentUserResponse.json();
 
-  profileState.user.isOwner = currentUser.data.id === profileState.user.id;
+  profileState.loggedUser = currentUser.data;
 
-  updateSidebarCounter();
+  profileState.user.isOwner =
+    profileState.loggedUser.id === profileState.user.id;
+
+  updateProfileSidebarCounter();
   renderProfile();
 }
 
-function updateSidebarCounter() {
+function updateProfileSidebarCounter() {
   const badge = document.getElementById("friends-count");
 
-  if (!badge || !profileState.user) return;
+  if (!badge || !profileState.loggedUser) return;
 
-  badge.innerText = profileState.user.followers;
+  badge.innerText = profileState.loggedUser.followers;
 }
 
 function renderProfile() {
@@ -133,14 +137,25 @@ function renderProfile() {
       </div>`;
   }
 
-  profileState.user.photos.forEach((photo, index) => {
+  profileState.user.photos.forEach((photo) => {
     photosContainer.insertAdjacentHTML(
       "beforeend",
       `
-      <div id="modal-${index}" style="display:none">
-        <img src="${photo.url}" />
-      </div>`,
+      <div class="user-photo-item">
+        <img
+          class="gallery-photo"
+          src="${photo.url}">
+      </div>
+    `,
     );
+  });
+
+  document.querySelectorAll("#profile-photos .gallery-photo").forEach((img) => {
+    img.addEventListener("click", () => {
+      document.getElementById("modal-photo").src = img.dataset.url;
+
+      document.getElementById("photo-modal").classList.add("active");
+    });
   });
 
   el("photos-box-count").innerText = `(${profileState.user.photoCount})`;
@@ -180,6 +195,7 @@ function renderProfile() {
 
 function renderProfilePosts() {
   const container = document.getElementById("profile-posts");
+
   container.innerHTML = "";
 
   if (!profileState.user.posts || profileState.user.posts.length === 0) {
@@ -190,16 +206,12 @@ function renderProfilePosts() {
             No posts published.
           </div>
         </div>
-      </div>`;
+      </div>
+    `;
     return;
   }
 
   profileState.user.posts.forEach((post) => {
-    post.user = {
-      name: profileState.user.name,
-      avatar: profileState.user.avatar,
-    };
-
     container.insertAdjacentHTML(
       "beforeend",
       renderPost(post, profileState.user.avatar),
@@ -318,4 +330,13 @@ function setupLogout() {
       location.href = "login.html";
     };
   });
+}
+
+function openPhotoModal(url) {
+  document.getElementById("modal-photo").src = url;
+  document.getElementById("photo-modal").classList.add("active");
+}
+
+function closePhotoModal() {
+  document.getElementById("photo-modal").classList.remove("active");
 }

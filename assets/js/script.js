@@ -19,6 +19,8 @@ async function init() {
 
   setupTabs();
   setupNewPost();
+  setupSearch();
+
   setupLogout();
 }
 
@@ -132,7 +134,7 @@ function renderPost(post, loggedUserAvatar) {
                   <div class="feed-item-avatar">
                       <img
                           class="feed-avatar-img"
-                          src="${loggedUserAvatar}">
+                          src="${post.user.avatar}">
                   </div>
                   <div class="feed-item-info">
                       <div class="feed-item-name">
@@ -382,8 +384,15 @@ async function toggleLike(id) {
 
   const json = await response.json();
 
-  if (json.error === "") {
+  if (json.error !== "") {
+    alert(json.error);
+    return;
+  }
+
+  if (document.getElementById("feed-container")) {
     await loadFeed();
+  } else if (document.getElementById("profile-posts")) {
+    await loadProfile();
   }
 }
 
@@ -424,7 +433,11 @@ async function handleCommentKey(event, id) {
 
   input.value = "";
 
-  await loadFeed();
+  if (document.getElementById("feed-container")) {
+    await loadFeed();
+  } else if (document.getElementById("profile-posts")) {
+    await loadProfile();
+  }
 }
 
 async function sendPost() {
@@ -495,4 +508,45 @@ async function deletePost(postId) {
   });
 
   loadFeed();
+}
+
+function setupSearch() {
+  const form = document.querySelector(".search-area form");
+
+  if (!form) return;
+
+  form.addEventListener("submit", searchUser);
+}
+
+async function searchUser(event) {
+  event.preventDefault();
+
+  const input = document.querySelector(".search-area input");
+
+  const text = input.value.trim();
+
+  if (text === "") return;
+
+  const response = await fetch(
+    `http://127.0.0.1:8000/api/search?txt=${encodeURIComponent(text)}`,
+    {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    },
+  );
+
+  const json = await response.json();
+
+  if (json.error !== "") {
+    alert(json.error);
+    return;
+  }
+
+  if (json.users.length === 0) {
+    alert("User not found.");
+    return;
+  }
+
+  window.location.href = `profile.html?id=${json.users[0].id}`;
 }

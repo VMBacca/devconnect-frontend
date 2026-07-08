@@ -230,6 +230,11 @@ header .logo img:hover {
   font-size: 13px;
   color: var(--text3);
   text-decoration: none;
+  color: var(--text3);
+  transition: color 0.2s;
+}
+.box-header-buttons a:hover {
+  color: var(--purple);
 }
 .box .box-body img {
   max-width: 100%;
@@ -266,19 +271,32 @@ header .logo img:hover {
   height: 50px;
   border-radius: 50%;
 }
+
 .feed-new-input-placeholder {
   flex: 1;
-  font-size: 14px;
-  color: #333;
+  font-size: 15px;
+  color: var(--text3);
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.2s;
+  cursor: text;
 }
+.feed-new-input-placeholder:hover {
+  color: var(--purple);
+}
+
 .feed-new-input {
   flex: 1;
   outline: 0;
   border: 0;
   font-size: 14px;
   display: none;
-  color: #333;
+  color: var(--text);
 }
+.feed-new-input::placeholder {
+  color: var(--text3);
+}
+
 .feed-new-send {
   cursor: pointer;
   margin-right: 5px;
@@ -386,6 +404,9 @@ header .logo img:hover {
   color: #000;
   text-decoration: none;
 }
+#photos-name {
+  color: var(--text);
+}
 .profile-info-location {
   color: var(--text2);
   font-size: 13px;
@@ -448,7 +469,7 @@ header .logo img:hover {
   text-decoration: none;
 }
 .friend-icon-avatar {
-  margin-bottom: 5px;
+  margin-bottom: 0px;
 }
 .friend-icon-avatar img {
   width: 55px;

@@ -190,6 +190,7 @@
                 </div>
                 <div class="box-header-buttons">
                   <a
+                    class="see-all-link"
                     href="friends.html"
                     onclick="window.location.href = 'friends.html'"
                   >
@@ -209,6 +210,7 @@
                 </div>
                 <div class="box-header-buttons">
                   <a
+                    class="see-all-link"
                     href="photos.html"
                     onclick="window.location.href = 'photos.html'"
                   >
@@ -224,10 +226,13 @@
         </div>
       </section>
     </section>
-    <div class="modal">
-      <div class="modal-inner">
-        <a rel="modal:close">&times;</a>
-        <div class="modal-content"></div>
+    <div class="modal" id="photo-modal" onclick="closePhotoModal()">
+      <div class="modal-inner" onclick="event.stopPropagation()">
+        <span class="modal-close" onclick="closePhotoModal()"> &times; </span>
+
+        <div class="modal-content">
+          <img id="modal-photo" class="gallery-photo-full" />
+        </div>
       </div>
     </div>
     <script type="text/javascript" src="assets/js/vanillaModal.js"></script>
